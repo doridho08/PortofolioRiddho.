@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id">
+    <audio id="click-sound" src="https://freesound.org/data/previews/466/466523_960389-lq.mp3"></audio>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riddho Portofolio</title>
+
+    <!-- Font Retro -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+    <style>
+        /* === RESET === */
+
+       /* === FADE IN BODY === */
+       .glitch {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #ff6f61;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+    animation: glitchTop 1s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    color: #ffeead;
+    animation: glitchBottom 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+    0% {
+        clip: rect(0, 9999px, 0, 0);
+    }
+    50% {
+        clip: rect(0, 9999px, 100%, 0);
+        transform: translateX(-3px);
+    }
+    100% {
+        clip: rect(0, 9999px, 0, 0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes glitchBottom {
+    0% {
+        clip: rect(100%, 9999px, 100%, 0);
+    }
+    50% {
+        clip: rect(0, 9999px, 100%, 0);
+        transform: translateX(3px);
+    }
+    100% {
+        clip: rect(100%, 9999px, 100%, 0);
+        transform: translateX(0);
+    }
+}
+
+body {
+    opacity: 0;
+    animation: fadeInBody 1s ease-out forwards;
+}
+
+.typing {
+    border-right: 2px solid #2e1f27;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3s steps(40, end) forwards, blink 0.7s step-end infinite;
+}
+
+nav ul li a {
+    /* tetapin properti sebelumnya */
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #ffccbc;
+    box-shadow: 0 0 6px #ff6f61, 0 0 12px #ffeead;
+    transform: scale(1.1);
+}
+
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+@keyframes fadeInBody {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === SMOOTH SCROLL === */
+html {
+    scroll-behavior: smooth;
+}
+
+/* === SECTION ANIMASI MASUK === */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+ 
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 8px 8px 0 #2e1f27;
+}
+
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Press Start 2P', monospace;
+            background-color: #fdf6e3;
+            color: #2e1f27;
+            padding-bottom: 100px;
+            line-height: 1.6;
+        }
+
+        /* === HEADER === */
+        
+        header {
+            background-color: maroon;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            text-shadow: 2px 2px #2e1f27;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2e1f27;
+            background: #ffeead;
+            padding: 10px 18px;
+            border-radius: 5px;
+            box-shadow: 3px 3px 0 #2e1f27;
+            transition: transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            transform: scale(1.1);
+            background-color: #ffccbc;
+        }
+
+        /* === MAIN CONTENT === */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        section {
+            background-color: #fff;
+            border: 3px dashed #2e1f27;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        /* === PROFILE === */
+        .profile-pic {
+            width: 150px;
+            border: 4px solid #330a20;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 25px;
+        }
+
+        /* === PROJECTS === */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: #ffeead;
+            padding: 20px;
+            border: 2px solid #2e1f27;
+            box-shadow: 4px 4px 0 #2e1f27;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    animation: redGlow 1.5s infinite alternate;
+    background-color: #fff8d6;
+}
+@keyframes redGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.9);
+  }
+}
+
+
+        .project-card img {
+            width: 100%;
+            border: 2px solid #2e1f27;
+            margin-bottom: 10px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: #2e1f27;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        /* === LINK STYLE === */
+        a {
+            color: #ff6f61;
+            text-decoration: underline;
+        }
+
+        /* === BACK TO TOP BUTTON === */
+        #back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #2e1f27;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            font-family: 'Press Start 2P', monospace;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #ffccbc;
+        }
+
+        #back-to-top:hover {
+            background-color: #ff6f61;
+        }
+
+        body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: linear-gradient(#2e1f2710 1px, transparent 1px),
+                      linear-gradient(90deg, #2e1f2710 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+    animation: backgroundMove 10s linear infinite;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+#pixelCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+header {
+    position: relative;
+    overflow: hidden;
+}
+header h1,
+nav {
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    position: relative;
+    animation: flicker 1.2s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0.85; }
+    100% { opacity: 1; }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+  60% { opacity: 1; }
+  70% { opacity: 0.98; }
+  80% { opacity: 1; }
+}
+
+body {
+  animation: flicker 1.5s infinite;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    body {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    header {
+        padding: 20px 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    nav ul li a {
+        padding: 8px 14px;
+        font-size: 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    section {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    h1, h2, h3 {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 100px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 16px;
+    }
+
+    #back-to-top {
+        padding: 8px 12px;
+        font-size: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- === HEADER === -->
+    <header>
+        <canvas id="pixelCanvas"></canvas>
+
+        <h1 class="glitch" data-text="Riddho's Portofolio 🎮">Riddho's Portofolio 🎮</h1>
+
+        <nav>
+            <ul>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- === MAIN CONTENT === -->
+    <div class="container">
+
+        <!-- === ABOUT === -->
+        <section id="about">
+            <img src="poto me.jpg" alt="Riddho Firdaus" class="profile-pic" />
+            <h2><span class="typing">Halo! Aku Riddho 👾</span></h2>
+
+            <p>Desainer grafis yang cinta gaya retro & eksperimen visual. Berpengalaman dengan Photoshop, Illustrator,
+                dan InDesign. Aku bikin desain yang punya cerita dan karakter.</p>
+        </section>
+
+        <!-- === PROJECTS === -->
+        <section id="skills">
+            <h2>Keahlian 🎨</h2>
+            <ul>
+              <li>Adobe Photoshop ✅</li>
+              <li>Adobe Illustrator ✅</li>
+              <li>Adobe Lightroom ✅</li>
+              <li>Desain Poster & Infografis ✅</li>
+              <li>Eksperimen Visual & Gaya Retro ✅</li>
+            </ul>
+          </section>
+          
+        <section id="projects">
+            <h2>Projek Poster 🕹️</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="poster.jpeg" alt="Poster Digital" />
+                    <h3>Poster Film</h3>
+                </div>
+                <div class="project-card">
+                    <img src="infografis tsunami.jpg" alt="Infografis Mengenal Tsunami" />
+                    <h3>Infografis Mengenal Tsunami</h3>
+                </div>
+                <div class="project-card">
+                    <img src="madamburden-Recovered.png" alt="Poster Film" />
+                    <h3>Poster Digital</h3>
+                </div>
+                <div class="project-card">
+                    <img src="lebaran.jpeg" alt="Poster Digital" />
+                    <h3>Poster Hari Raya</h3>
+                </div>
+                <div class="project-card">
+                    <img src="porsen.jpeg" alt="Infografis Event" />
+                    <h3>Poster Event</h3>
+                </div>
+                <div class="project-card">
+                    <img src="POSTER OSIS.jpg" alt="Poster Film" />
+                    <h3>Infografis Recruitment Osis</h3>
+                </div>
+                <div class="project-card">
+                    <img src="berapakah usia bumi.jpg" alt="Infografis Bumi" />
+                    <h3>Infografis Bumi</h3>
+                </div>
+                <div class="project-card">
+                    <img src="gta.jpg" alt="Poster Digital Kelas" />
+                    <h3>Poster Digital Kelas</h3>
+                </div>
+                <div class="project-card">
+                    <img src="kelas.jpeg" alt="Infografis Stop Bullying" />
+                    <h3>Infografis Stop Bullying</h3>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projek Banner 🕹️</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="sanlat.jpeg" alt="Banner Acara Sanlat" />
+                    <h3>Banner Acara Sanlat</h3>
+                </div>
+                <div class="project-card">
+                    <img src="mpls.jpeg" alt="Banner Acara MPLS" />
+                    <h3>Banner Acara MPLS</h3>
+                </div>
+                <div class="project-card">
+                    <img src="selamat.jpeg" alt="Banner Ucapan Selamat Datang" />
+                    <h3>Banner Ucapan Selamat Datang</h3>
+                </div>
+            </div> <br>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="agus.jpg" alt="Banner Acara 17 Agustus" />
+                    <h3>Banner Acara 17 Agustus</h3>
+                </div>
+                <div class="project-card">
+                    <img src="porseni.jpeg" alt="Banner Event Sekolah" />
+                    <h3>Banner Event Sekolah</h3>
+                </div>
+                <div class="project-card">
+                    <img src="hari.jpeg" alt="Banner Acara Hari Guru" />
+                    <h3>Banner Acara Hari Guru</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- === KONTAK === -->
+        <section id="kontak">
+            <h2>Kontak 📞</h2>
+            <p>Email: <a href="https://riddhofirdaus@gmail.com"  target="_blank">riddhofirdaus@gmail.com</a></p>
+            <p>WA: <a href="https://wa.me/6285947370754" target="_blank">+62 859 4737 0754</a></p>
+            <p>Instagram: <a href="https://instagram.com/riddho08" target="_blank">@riddho08</a></p>
+        </section>
+
+    </div>
+
+    <!-- === FOOTER === -->
+    <footer>
+        &copy; 2025 Riddho Firdaus - All Rights Reserved 🧡
+    </footer>
+
+    <!-- === BACK TO TOP === -->
+    <button id="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+        ↑ TOP
+    </button>
+    
+    <script>
+        const sections = document.querySelectorAll('section');
+    
+        const revealSections = () => {
+            const triggerBottom = window.innerHeight * 0.85;
+    
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('visible');
+                }
+            });
+        };
+    
+        // Biar animasi langsung aktif kalau buka link langsung ke anchor
+        window.addEventListener('load', revealSections);
+        window.addEventListener('scroll', revealSections);
+    </script>
+    
+<script>
+    const links = document.querySelectorAll("nav a");
+    const clickSound = document.getElementById("click-sound");
+
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            clickSound.currentTime = 0;
+            clickSound.play();
+        });
+    });
+</script>
+
+<script>
+    const canvas = document.getElementById('pixelCanvas');
+    const ctx = canvas.getContext('2d');
+    let dots = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector('header').offsetHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 100; i++) {
+        dots.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5
+        });
+    }
+
+    function drawDots() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#ffeead";
+
+        dots.forEach(dot => {
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            dot.x += dot.dx;
+            dot.y += dot.dy;
+
+            // Bounce
+            if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+            if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
+        });
+
+        requestAnimationFrame(drawDots);
+    }
+
+    drawDots();
+</script>
+
+
+</body>
+
+</html>
